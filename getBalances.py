@@ -45,7 +45,7 @@ def getQ(df):
 """
 this function will initialize our dictionary mapping people to their points
 """
-def getTotals(df):
+def initTotals(df):
     global payer_points
     for payer in df["payer"].unique():
         payer_points[payer]
@@ -53,6 +53,18 @@ def getTotals(df):
     for i, row in df.iterrows():
         payer_points[row["payer"]] += row["points"]
     # payer_points is the totals that we will keep track of and eventually display
+"""
+this function performs our calculation using our deque and give number of points
+"""
+def calculate(q,points):
+    global payer_points
+    while q and points > 0:
+        cur = q.popleft()
+        if cur["points"] > points:
+            payer_points[cur["payer"]] -= points
+            break # out of points
+        points -= cur["points"]
+        payer_points[cur["payer"]] -= cur["points"]
 
 try:
     isFileValid(fileName)
@@ -64,8 +76,8 @@ except ValueError:
     
 df = pandas.read_csv(fileName)
 q = getQ(df)
-getTotals(df)
+initTotals(df)
+calculate(q, int(numPoints))
+print(dict(payer_points)) # result
 
-# start peeking and popping from q until we are out of points (numPoints <= 0)
-# everytime you pop, edit the payer_points dict accordingly
 

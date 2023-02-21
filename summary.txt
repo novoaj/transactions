@@ -1,0 +1,25 @@
+1. Why did you choose the tools, libraries, and language you used for the coding exercise?
+    I chose to use pandas and collections.deque. I used pandas because of how helpful it is for dealing with csv's; specifically, 
+    converting csvs to pandas DataFrames. This made it pretty easy for me to sort by time and put the transactions in a queue.
+    the deque supports constant time operations, specifically popleft. If I woudl've used a normal python list and had it act
+    as a queue, the pop(0) operation would not be constant time. I decided on Python because that is the language I like the best,
+    especially for dealing with data due to packages like pandas. 
+
+2. What are the advantages and disadvantages of your solution?
+    I feel as though my solution isn't quite as safe as it could be. If someone were to put a csv that isn't structured how
+    the program expects, there would be some issues. My function that checks the csv just checks that the filename is indeed a csv
+    but doesn't look at the contents at all. I believe that pandas makes my code a lot more readable and the use of collections.deque
+    guarentees me a queue with O(1) operations. In another language, I'm not quite sure how I would sort by the time, it would
+    certainly take me a lot more lines of code than "DataFrame.sort_values(by = "timestamp")".
+
+3. What has been a favorite school/personal project thus far? What about it that challenged you?
+    My favorite project was the personal project I recently did. The most challenging part about it was that I was doing it
+    on my own without much guidance. With school projects, we know what we are trying to make or what the end product should
+    look like. With this personal project it was up to me to learn new things and implement them however I could in the context
+    of my project. The project is just a weather app in the form of a Python CGI script. I learned about CGI scripting through
+    my Java programming class earlier in the year and was interested in doing some sort of web based project that utilized
+    REST APIs. I had never done anything with APIs so I had to learn how to use them properly through my own research. While learning
+    about APIs I learned it wasn't good practice to leave the API Key lying around which threw a wrench in my plans as I just planned
+    on doing a JavaScript/HTML/CSS project, making calls to the APIs in the JavaScript. This presented a problem because I didn't
+    know how to hide my API Keys in JavaScript. Ultimately I worked around this by writing a Python CGI script and storing my keys in a 
+    .env file. Even though this project wasn't very many lines of code, I learned a lot and am content with how it turned out. 

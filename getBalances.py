@@ -41,7 +41,6 @@ def getQ(df):
     for i, row in sorted_df.iterrows():   
         q.append(df.iloc[i])
     return q
-# also want something to keep track of each person's points so we can return at the end
 """
 this function will initialize our dictionary mapping people to their points
 """
@@ -52,7 +51,6 @@ def initTotals(df):
         
     for i, row in df.iterrows():
         payer_points[row["payer"]] += row["points"]
-    # payer_points is the totals that we will keep track of and eventually display
 """
 this function performs our calculation using our deque and give number of points
 """
